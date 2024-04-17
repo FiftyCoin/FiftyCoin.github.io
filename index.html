@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- COMMON TAGS -->
+    <meta charset="utf-8">
+    <title>FiftyCoin Clicker</title>
+    <!-- Search Engine -->
+    <meta name="description" content="A clicker game where you can get virtual FiftyCoins by clicking!">
+    <meta name="image" content="https://raw.githubusercontent.com/julianYaman/FiftyCoin-clicker/master/images/FiftyCoin-8bit.png">
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="FiftyCoin Clicker">
+    <meta itemprop="description" content="A clicker game where you can get virtual FiftyCoins by clicking!">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/julianYaman/FiftyCoin-clicker/master/images/FiftyCoin-8bit.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FiftyCoin Clicker">
+    <meta name="twitter:description" content="A clicker game where you can get virtual FiftyCoins by clicking!">
+    <meta name="twitter:site" content="@julianYaman">
+    <meta name="twitter:image:src" content="https://raw.githubusercontent.com/julianYaman/FiftyCoin-clicker/master/images/FiftyCoin-8bit.png">
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:title" content="FiftyCoin Clicker">
+    <meta name="og:description" content="A clicker game where you can get virtual FiftyCoins by clicking!">
+    <meta name="og:image" content="https://raw.githubusercontent.com/julianYaman/FiftyCoin-clicker/master/images/FiftyCoin-8bit.png">
+    <meta name="og:url" content="https://julianyaman.github.io/FiftyCoin-clicker/index.html">
+    <meta name="og:site_name" content="FiftyCoin Clicker">
+    <meta name="og:type" content="website">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <style>
+        body {
+            background-image: url('background.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: 50px auto;
+
+            border: 2px solid #ccc;
+        }
+        #plot {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 600px;
+            height: 400px;
+
+        }
+        #sidebar {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 150px;
+            height: 400px;
+
+
+            padding: 10px;
+        }
+        #bottom-label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="gameFullContent">
+
+    <div class="leftContainer">
+
+        <button class="resetButton">РАЗОРИТЬСЯ</button>
+    </div>
+    <div id="transactions"></div>
+    <div class="mainGameContent">
+        <p class="bSecRate"><span class="bSecRateNumber">0</span> FiftyCoins/sec</p>
+        <h1 class="bitcoinAmountDisplay"><span class="bitcoinAmount">0</span> FiftyCoins</h1>
+        <img class="bitcoin" src="images/bitcoin-8bit.png">
+
+
+    </div>
+
+
+        <div class="rightContainer buyItemContainer">
+            <ul class="purchaseList">
+                <li class="purchaseItem" id="item_oldCalculator" data-price="0.0000001" data-bits-per-sec="0.00000001">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Взяь взаймы</p>
+                    <p class="itemPrice">0.0000001 FiftyCoin </p>
+                </li>
+                <li class="purchaseItem" id="item_oldCpu" data-price="0.00000125" data-bits-per-sec="0.0000001">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Депнуть ставку</p>
+                    <p class="itemPrice">0.00000125 FiftyCoin </p>
+                </li>
+                <li class="purchaseItem" id="item_oldComputerFromGrandpa" data-price="0.00003" data-bits-per-sec="0.000005">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Перепродать жигу</p>
+                    <p class="itemPrice">0.00003 FiftyCon </p>
+                </li>
+                <li class="purchaseItem" id="item_rapsberrypy" data-price="0.00005" data-bits-per-sec="0.0000075">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Работа на ВБ</p>
+                    <p class="itemPrice">0.00005 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_smartphone" data-price="0.0005" data-bits-per-sec="0.000075">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Продать телефон</p>
+                    <p class="itemPrice">0.0005 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_middleClassPC" data-price="0.0015" data-bits-per-sec="0.000175">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Взять кредит</p>
+                    <p class="itemPrice">0.0015 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_cheapServer" data-price="0.0040" data-bits-per-sec="0.000375">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Микрозайм</p>
+                    <p class="itemPrice">0.0040 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_gamingPC" data-price="0.015" data-bits-per-sec="0.00175">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Пойти на физру</p>
+                    <p class="itemPrice">0.015 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_cheapMiner" data-price="0.05" data-bits-per-sec="0.007">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Забрать телефон у девушки</p>
+                    <p class="itemPrice">0.05 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_highEndUltraPC" data-price="0.15" data-bits-per-sec="0.021">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Попросить денег у Лизы</p>
+                    <p class="itemPrice">0.15 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_bigMiner" data-price="1.5" data-bits-per-sec="0.2">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Отдать долг Арсению</p>
+                    <p class="itemPrice">1.5 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_miningFarm" data-price="250" data-bits-per-sec="25">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Раздать всем долги</p>
+                    <p class="itemPrice">250 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_nasaPC" data-price="5000" data-bits-per-sec="500">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Взять еще долгов</p>
+                    <p class="itemPrice">5.000 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_quantumRig" data-price="245000" data-bits-per-sec="24000">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Сдать золото</p>
+                    <p class="itemPrice">245.000 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_miningFarmSpace" data-price="2000000" data-bits-per-sec="95000">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Ограбить вб</p>
+                    <p class="itemPrice">2.000.000 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_miningFarmMoon" data-price="37500000" data-bits-per-sec="6750">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Создать фифти коин</p>
+                    <p class="itemPrice">75.500.000 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_bitcoinTimeMachine" data-price="500000000" data-bits-per-sec="80000000">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Вложиться в схемку</p>
+                    <p class="itemPrice">975.000.000 FiftyCoin</p>
+                </li>
+                <li class="purchaseItem" id="item_blackHolePoweredMiner" data-price="75000000000" data-bits-per-sec="1750000000">
+                    <span class="amountOfItem">0</span>
+                    <p class="itemHeadline">Потеряь все деньги</p>
+                    <p class="itemPrice">750.000.000.000 FiftyCoin</p>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<div id="container">
+    <canvas id="plot"></canvas>
+    <div id="sidebar">
+        <p>рубль</p> <!-- Рубль -->
+    </div>
+    <div id="bottom-label">
+        fifty coin <!-- Fifty Coin -->
+    </div>
+    <img src="trade_panel_1.gif" alt="График" style="position: absolute; top: 10px; left: 10px; max-width: 5000px;">
+</div>
+<script>
+    class CryptoTransaction {
+        constructor() {
+            this.container = document.getElementById('transactions');
+            this.interval = null;
+        }
+
+        start() {
+            this.interval = setInterval(() => {
+                const amount = Math.floor(Math.random() * 1000) + 1; // Сумма транзакции
+                const type = Math.random() > 0.5 ? 'продажа' : 'покупка'; // Тип транзакции
+                const currency = 'Fifty Coins'; // Валюта
+                const transaction = document.createElement('p');
+                transaction.textContent = `Тип: ${type}, Сумма: ${amount} ${currency}`;
+                if (type === 'продажа') {
+                    transaction.style.color = 'red'; // Красный цвет для продажи
+                } else {
+                    transaction.style.color = 'green'; // Зеленый цвет для покупки
+                }
+                this.container.insertBefore(transaction, this.container.firstChild);
+                if (this.container.children.length > 5) { // Ограничим количество отображаемых транзакций
+                    this.container.removeChild(this.container.lastChild);
+                }
+            }, 2000); // Новая транзакция каждые 2 секунды
+        }
+
+        stop() {
+            clearInterval(this.interval);
+        }
+    }
+
+    const cryptoTransaction = new CryptoTransaction();
+    cryptoTransaction.start();
+</script>
+<script src="lib/jquery-3.3.1.min.js"></script>
+<script async src="scripts/app.js" type="text/javascript"></script>
+</body>
+</html>
